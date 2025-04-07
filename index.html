@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Montagem de Fotos PDF</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+  <div class="container">
+    <h2>Montagem de Fotos</h2>
+
+    <label for="photo1">Foto 1:</label>
+    <input type="file" id="photo1" accept="image/*">
+
+    <label for="photo2">Foto 2:</label>
+    <input type="file" id="photo2" accept="image/*">
+
+    <label for="tamanho">Tamanho do PDF:</label>
+    <select id="tamanho">
+      <option value="#" selected>Selecione</option>
+      <option value="25x20">25 x 20 cm(Melhor)</option>
+      <option value="30x20">30 x 20 cm</option>
+      <option value="15x10">15 x 10 cm</option>
+    </select>
+
+    <!-- Imagens escondidas (poderia exibir como preview se quiser) -->
+    <img id="img1" style="display: none;" />
+    <img id="img2" style="display: none;" />
+
+    <button onclick="gerarPDF()">📥 Baixar em PDF</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
