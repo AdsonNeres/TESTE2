@@ -8,7 +8,12 @@
   <link rel="stylesheet" href="style.css" />
 
   <!-- Cropper.js -->
-  <link href="https://cdn.jsdelivr.net/npm/cropperjs@1.5.13/dist/cropper.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/cropperjs@1.5.13/dist/cropper.min.css" rel="stylesheet" />
+
+  <!-- PWA -->
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#ffffff" />
+  <link rel="apple-touch-icon" href="icons/icon-192x192.png" />
 
   <!-- jsPDF -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
@@ -22,13 +27,13 @@
     <h2>Etiquetas Eduardo</h2>
 
     <label for="photo1">Foto 1:</label>
-    <input type="file" id="photo1" accept="image/*">
+    <input type="file" id="photo1" accept="image/*" />
 
     <label for="photo2">Foto 2:</label>
-    <input type="file" id="photo2" accept="image/*">
+    <input type="file" id="photo2" accept="image/*" />
 
     <label for="pdfUpload">Carregar um PDF com a etiqueta:</label>
-    <input type="file" id="pdfUpload" accept="application/pdf">
+    <input type="file" id="pdfUpload" accept="application/pdf" />
 
     <!-- Container do Recorte -->
     <div id="pdfCropContainer" style="display:none; margin-top: 20px;">
@@ -81,6 +86,15 @@
 
   <!-- Cropper.js -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.js"></script>
+
+  <!-- Service Worker (PWA) -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('service-worker.js')
+        .then(() => console.log("✅ Service Worker registrado"))
+        .catch(error => console.log("❌ Erro ao registrar Service Worker:", error));
+    }
+  </script>
 
   <!-- Script principal -->
   <script src="script.js"></script>

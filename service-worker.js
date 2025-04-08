@@ -1,12 +1,12 @@
-const CACHE_NAME = "montagem-pwa-v1";
+const CACHE_NAME = "etiquetas-pwa-v1";
 const urlsToCache = [
   "./",
   "./index.html",
   "./style.css",
   "./script.js",
   "./manifest.json",
-  "./icon-192.png",
-  "./icon-512.png"
+  "./icons/icon-192x192.png",
+  "./icons/icon-512x512.png"
 ];
 
 self.addEventListener("install", (event) => {
