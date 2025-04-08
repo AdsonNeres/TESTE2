@@ -43,7 +43,6 @@ select {
   width: 100%;
   max-width: 100%;
   height: auto;
-  border: 2px dashed #ccc;
   margin-top: 10px;
 }
 

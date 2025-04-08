@@ -1,31 +1,33 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Montagem de Fotos e PDF</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Etiquetas Eduardo</title>
   <link rel="stylesheet" href="style.css" />
-  
+
   <!-- Cropper.js -->
   <link href="https://cdn.jsdelivr.net/npm/cropperjs@1.5.13/dist/cropper.min.css" rel="stylesheet">
 
   <!-- jsPDF -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-  
+
   <!-- PDF.js -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.min.js"></script>
 </head>
+
 <body>
   <div class="container">
-    <h2>Montagem de Etiquetas</h2>
+    <h2>Etiquetas Eduardo</h2>
 
-    <label for="photo1" style="display: none">Foto 1:</label>
-    <input type="file" id="photo1" accept="image/*" style="display: none">
+    <label for="photo1">Foto 1:</label>
+    <input type="file" id="photo1" accept="image/*">
 
     <label for="photo2">Foto 2:</label>
     <input type="file" id="photo2" accept="image/*">
 
-    <label for="pdfUpload">OU carregar um PDF:</label>
+    <label for="pdfUpload">Carregar um PDF com a etiqueta:</label>
     <input type="file" id="pdfUpload" accept="application/pdf">
 
     <!-- Container do Recorte -->
@@ -38,21 +40,50 @@
 
     <label for="tamanho">Tamanho do PDF:</label>
     <select id="tamanho">
-      <option value="25x20">25 x 20 cm</option>
+      <option value="#" selected>Selecione o tamanho</option>
+      <option value="25x20">25 x 20 cm (Recomendado)</option>
       <option value="30x20">30 x 20 cm</option>
       <option value="15x10">15 x 10 cm</option>
+      <option value="20x10">20 x 10 cm</option>
+      <option value="15x20">15 x 20 cm</option>
     </select>
 
-    <img id="img1" style="display: none; max-width: 300px;" />
-    <img id="img2" style="display: none; max-width: 300px;" />
+    <div style="margin-top: 20px;">
+      <img id="img1" style="display: none; max-width: 300px;" />
+      <img id="img2" style="display: none; max-width: 300px;" />
+    </div>
 
+    <button onclick="gerarPDF()" style="margin-top: 20px;">📥 Baixar PDF com Fotos</button>
   </div>
-    <button onclick="gerarPDF()">📥 Baixar PDF com Fotos</button>
+
+  <!-- Mensagem de status com barra de progresso -->
+  <div id="statusMessage" style="
+    display: none;
+    background: #e8f5e9;
+    border: 1px solid #4CAF50;
+    padding: 10px;
+    color: #2e7d32;
+    font-weight: bold;
+    border-radius: 5px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    width: 300px;
+    text-align: center;
+  ">
+    <span id="statusText">✅ Recorte salvo, importe a Foto 2</span>
+    <div style="margin-top: 5px; background: #c8e6c9; height: 6px; border-radius: 3px;">
+      <div id="progressBar" style="height: 6px; width: 0%; background: #4CAF50; border-radius: 3px; transition: width 0.1s;"></div>
+    </div>
+  </div>
 
   <!-- Cropper.js -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.js"></script>
 
-  <!-- script principal -->
+  <!-- Script principal -->
   <script src="script.js"></script>
 </body>
+
 </html>
