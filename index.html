@@ -3,35 +3,56 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Montagem de Fotos PDF</title>
+  <title>Montagem de Fotos e PDF</title>
   <link rel="stylesheet" href="style.css" />
+  
+  <!-- Cropper.js -->
+  <link href="https://cdn.jsdelivr.net/npm/cropperjs@1.5.13/dist/cropper.min.css" rel="stylesheet">
+
+  <!-- jsPDF -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  
+  <!-- PDF.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.min.js"></script>
 </head>
 <body>
   <div class="container">
-    <h2>Montagem de Fotos</h2>
+    <h2>Montagem de Etiquetas</h2>
 
-    <label for="photo1">Foto 1:</label>
-    <input type="file" id="photo1" accept="image/*">
+    <label for="photo1" style="display: none">Foto 1:</label>
+    <input type="file" id="photo1" accept="image/*" style="display: none">
 
     <label for="photo2">Foto 2:</label>
     <input type="file" id="photo2" accept="image/*">
 
+    <label for="pdfUpload">OU carregar um PDF:</label>
+    <input type="file" id="pdfUpload" accept="application/pdf">
+
+    <!-- Container do Recorte -->
+    <div id="pdfCropContainer" style="display:none; margin-top: 20px;">
+      <p>Selecione a área do PDF para recortar:</p>
+      <img id="pdfCropImage" style="max-width: 100%;" />
+      <br><br>
+      <button id="exportarRecorte">Exportar Recorte e Enviar para Foto 1</button>
+    </div>
+
     <label for="tamanho">Tamanho do PDF:</label>
     <select id="tamanho">
-      <option value="#" selected>Selecione</option>
-      <option value="25x20">25 x 20 cm(Melhor)</option>
+      <option value="25x20">25 x 20 cm</option>
       <option value="30x20">30 x 20 cm</option>
       <option value="15x10">15 x 10 cm</option>
     </select>
 
-    <!-- Imagens escondidas (poderia exibir como preview se quiser) -->
-    <img id="img1" style="display: none;" />
-    <img id="img2" style="display: none;" />
+    <img id="img1" style="display: none; max-width: 300px;" />
+    <img id="img2" style="display: none; max-width: 300px;" />
 
-    <button onclick="gerarPDF()">📥 Baixar em PDF</button>
   </div>
+    <button onclick="gerarPDF()">📥 Baixar PDF com Fotos</button>
 
+  <!-- Cropper.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.js"></script>
+
+  <!-- script principal -->
   <script src="script.js"></script>
 </body>
 </html>
